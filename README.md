@@ -16,8 +16,28 @@ git remote add origin https://github.com/huutrinh68/eshop.git
 ###### Install library:
 pip install django-compressor
 pip install django-paypal
+pip install django-oscar-paypal
+###### Reference URL
+http://akiyoko.hatenablog.jp/entry/2016/05/31/014711
+https://qiita.com/ytyng/items/a4ae77df8bc4c5506d19
+
+###### Add shipping country
+pip install pycountry
+./manage.py oscar_populate_countries
 
 ###### Run command:
 ./manage.py makemigrations
 ./manage.py migrate
 ./manage.py runserver
+
+###### Test visa
+http://www.getcreditcardnumbers.com
+
+###### Show all tables in database
+qlite3 db.sqlite3
+.tables
+
+###### Fake address
+https://www.fakeaddressgenerator.com/World/us_address_generator
+
+

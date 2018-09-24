@@ -22,7 +22,8 @@ from django.utils.translation import gettext_lazy as _
 OSCAR_SHOP_NAME = 'KimLinhShop'
 OSCAR_HOMEPAGE = 'http://127.0.0.1:8000/catalogue/'
 OSCAR_SHOP_TAGLINE = 'Hàng xách tay Nhật Bản'
-OSCAR_DEFAULT_CURRENCY = 'VND'
+OSCAR_DEFAULT_CURRENCY = 'USD'
+# OSCAR_CURRENCY_FORMAT = '¤#,##0'
 
 
 # Quick-start development settings - unsuitable for production
@@ -178,6 +179,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
+
+COMPRESS_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'compressfiles')
+COMPRESS_ENABLED = True
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile} {outfile}'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder'
+)
 
 # Defining the order pipeline
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
@@ -187,6 +200,12 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Being processed': ('Processed', 'Cancelled',),
     'Cancelled': (),
 }
+
+OSCAR_ORDER_STATUS_CASCADE = {
+    'Being processed': 'Being processed',
+    'Cancelled': 'Cancelled',
+    'Complete': 'Shipped',
+}
 # Non user also can checkout
 OSCAR_ALLOW_ANON_CHECKOUT = True
 
@@ -194,3 +213,34 @@ OSCAR_ALLOW_ANON_CHECKOUT = True
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
+
+# Django-Paypal setting
+PAYPAL_RECEIVER_EMAIL = 'trinhnh68@gmail.com'
+PAYPAL_TEST = True
+
+PAYPAL_SANDBOX_MODE = True
+PAYPAL_CALLBACK_HTTPS = False
+PAYPAL_API_VERSION = '119'
+
+PAYPAL_API_USERNAME = ''
+PAYPAL_API_PASSWORD = ''
+PAYPAL_API_SIGNATURE = ''
+
+from django.utils.translation import ugettext_lazy as _
+OSCAR_DASHBOARD_NAVIGATION.append(
+    {
+        'label': _('PayPal'),
+        'icon': 'icon-globe',
+        'children': [
+            {
+                'label': _('Express transactions'),
+                'url_name': 'paypal-express-list',
+            },
+        ]
+    })
+
+# Try and import local settings which can be used to override any of the above.
+try:
+    from settings_local import *
+except ImportError:
+    pass
