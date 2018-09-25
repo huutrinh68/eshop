@@ -1,3 +1,3 @@
 git add .
-git commit -m 'build eshop'
+git commit
 git push origin develop

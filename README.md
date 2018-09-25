@@ -40,4 +40,6 @@ qlite3 db.sqlite3
 ###### Fake address
 https://www.fakeaddressgenerator.com/World/us_address_generator
 
+###### TODO
+* add tax rate
 

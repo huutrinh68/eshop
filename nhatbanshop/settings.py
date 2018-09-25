@@ -19,9 +19,9 @@ from oscar.defaults import *
 from django.utils.translation import gettext_lazy as _
 
 # Shop name
-OSCAR_SHOP_NAME = 'KimLinhShop'
+OSCAR_SHOP_NAME = 'Test'
 OSCAR_HOMEPAGE = 'http://127.0.0.1:8000/catalogue/'
-OSCAR_SHOP_TAGLINE = 'Hàng xách tay Nhật Bản'
+OSCAR_SHOP_TAGLINE = 'Shop'
 OSCAR_DEFAULT_CURRENCY = 'USD'
 # OSCAR_CURRENCY_FORMAT = '¤#,##0'
 
@@ -175,10 +175,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
 OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
 
 COMPRESS_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'compressfiles')
@@ -222,9 +227,6 @@ PAYPAL_SANDBOX_MODE = True
 PAYPAL_CALLBACK_HTTPS = False
 PAYPAL_API_VERSION = '119'
 
-PAYPAL_API_USERNAME = ''
-PAYPAL_API_PASSWORD = ''
-PAYPAL_API_SIGNATURE = ''
 
 from django.utils.translation import ugettext_lazy as _
 OSCAR_DASHBOARD_NAVIGATION.append(
