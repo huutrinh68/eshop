@@ -23,8 +23,11 @@ OSCAR_SHOP_NAME = 'Test'
 OSCAR_HOMEPAGE = 'http://127.0.0.1:8000/catalogue/'
 OSCAR_SHOP_TAGLINE = 'Shop'
 OSCAR_DEFAULT_CURRENCY = 'USD'
-# OSCAR_CURRENCY_FORMAT = '¤#,##0'
 
+# Admin setting
+ADMIN_SITE_HEADER = "Quan tri Test"
+ADMIN_INDEX_TITLE = "Shop"
+ADMIN_SITE_TITLE = "Test"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -176,7 +179,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -227,6 +229,9 @@ PAYPAL_SANDBOX_MODE = True
 PAYPAL_CALLBACK_HTTPS = False
 PAYPAL_API_VERSION = '119'
 
+PAYPAL_API_USERNAME = 'trinhnh68-facilitator_api1.gmail.com'
+PAYPAL_API_PASSWORD = '7ML9S75A4L6MKMH8'
+PAYPAL_API_SIGNATURE = 'ARKKjAgrE8r4CHWpmgmpfP24UAKwAJApnQ519zbMv4mNvwD1Qgn6rPQr'
 
 from django.utils.translation import ugettext_lazy as _
 OSCAR_DASHBOARD_NAVIGATION.append(
@@ -246,3 +251,11 @@ try:
     from settings_local import *
 except ImportError:
     pass
+
+# Stripe
+# STRIPE_LIVE_PUBLIC_KEY = os.environ.get("STRIPE_LIVE_PUBLIC_KEY", "<your publishable key>")
+# STRIPE_LIVE_SECRET_KEY = os.environ.get("STRIPE_LIVE_SECRET_KEY", "<your secret key>")
+STRIPE_TEST_PUBLIC_KEY = os.environ.get("STRIPE_TEST_PUBLIC_KEY", "pk_test_cNc44TvMDUwkP9nuRXcZLAXG")
+STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY", "sk_test_a0DhDt7BLLh3p1cjUPgDPfGr")
+STRIPE_LIVE_MODE = False
+STRIPE_CURRENCY = "VND"

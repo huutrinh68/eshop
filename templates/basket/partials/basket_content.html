@@ -154,9 +154,9 @@
 
 
     {% block formactions %}
-        <!-- <div class="form-group clearfix">  -->
         <div class="form-actions">
             <div class="row">
+                <!-- Paypal payment -->
                 <div class="col-sm-8">
                     {% if anon_checkout_allowed or request.user.is_authenticated %}
                     {% if basket.total_excl_tax > 0 %}
@@ -164,6 +164,7 @@
                     {% endif %}
                     {% endif %}
                 </div>
+                <!-- Normal payment -->
                 <div class="col-sm-4">
                     <a href="{% url 'checkout:index' %}" class="btn btn-lg btn-primary btn-block">{% trans "Proceed to checkout" %}</a>
                 </div>

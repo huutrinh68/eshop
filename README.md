@@ -42,4 +42,10 @@ https://www.fakeaddressgenerator.com/World/us_address_generator
 
 ###### TODO
 * add tax rate
+* stripe
+user: trinhsp89@gmail.com
+pass: Nhatban2009
+* show name country shipping
 
+###### Install stripe
+pip install stripe

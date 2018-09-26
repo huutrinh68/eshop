@@ -21,6 +21,9 @@ from django.conf.urls.static import static
 from paypal.express.dashboard.app import application as express_dashboard
 from oscar.views import handler500, handler404, handler403
 
+admin.site.site_header = settings.ADMIN_SITE_HEADER
+admin.site.index_title = settings.ADMIN_INDEX_TITLE
+admin.site.site_title = settings.ADMIN_SITE_TITLE
 
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),

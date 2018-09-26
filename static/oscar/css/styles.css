@@ -7880,7 +7880,7 @@ a .icon-flip-vertical:before {
   .carousel-caption {
     left: 20%;
     right: 20%;
-    padding-bottom: 30px;
+    padding-bottom: 100px;
   }
   .carousel-indicators {
     bottom: 20px;
